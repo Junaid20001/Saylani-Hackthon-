@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+    <header class="container-fluid">
+        <div class="container">
+           <div class="navbar">
+              <div class="logo"> <img src="images/logoss.png" alt="Resturent Logo" width="150px"/> </div>
+              <nav>
+                 <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li class="active"><a href="account.html">Account</a></li>
+                 </ul>
+              </nav>
+              <img src="images/imagescarter.png" width="30px" height="30px"> 
+           </div>
+        </div>
+     </header>
+
+
+      
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand"></a>
+            <button onclick="logout()" class="btn btn-outline-success" type="submit">Logout</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row justify-content-center mt-20">
+            <div class="col-6 justify-content-center text-center">
+                <h2>Profile</h2>
+                <div class="profile-div">
+                    <img id="userprofile"
+                        src="images/buy-1.jpg"
+                        alt="">
+                    <div>
+                        <i  class="fa fa-camera" data-toggle="modal" data-target="#exampleModal" aria-hidden="true"></i>
+                        <!-- Button trigger modal -->
+
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5  class="modal-title" id="exampleModalLabel">Edit image</h5>
+
+                                        <button id="closeBtn" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                       <input id="editProfile" type="file" />
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                        <button onclick="updateProfile()" type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="mt-20">
+                    <h2 id="username"></h2>
+                    <span id="email"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="footer">
+        <div class="container">
+           <div class="row">
+              <div class="footer_col_1">
+                 <h3>Download Our App</h3>
+                 <p>Download Our App for mobile and ios</p>
+                 <div class="app_logo"> <img src="images/play-store.png" width="100px"> <img src="images/app-store.png" width="100px"> </div>
+              </div>
+              <div class="footer_col_2">
+                 <img src="images/Pakistan download.jfif" width="50px"> 
+                 <p>The only thing we're serious about is food So please Be Aware from us</p>
+              </div>
+              <div class="footer_col_3">
+                 <h3>Usefull Links</h3>
+                 <uL>
+                    <li>Coupons for Food</li>
+                    <li>Blog Post to Win Food</li>
+                    <li>Read Our Policy</li>
+                    <li>Join As a Member</li>
+                 </uL>
+              </div>
+              <div class="footer_col_4">
+                 <h3>Follow us</h3>
+                 <uL>
+                    <li>Facebook</li>
+                    <li>Twitter</li>
+                    <li>Instragram</li>
+                    <li>Youtube</li>
+                 </uL>
+              </div>
+           </div>
+           <hr>
+           <p class="copyright">&copy; 2021 all reserved by Junaid Khalid</p>
+        </div>
+     </div>
+
+
+     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+     
+     <!-- TODO: Add SDKs for Firebase products that you want to use
+          https://firebase.google.com/docs/web/setup#available-libraries -->
+     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+     
+     <script>
+       // Your web app's Firebase configuration
+       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+       var firebaseConfig = {
+         apiKey: "AIzaSyBenkAkwepxaan80Lp9xIwjoFt9zGhCWuo",
+         authDomain: "saylani-hackthon.firebaseapp.com",
+         projectId: "saylani-hackthon",
+         storageBucket: "saylani-hackthon.appspot.com",
+         messagingSenderId: "63528547471",
+         appId: "1:63528547471:web:39cc101816f3d8fb6bacfa",
+         measurementId: "G-RHEFYM8LB7"
+       };
+       // Initialize Firebase
+       firebase.initializeApp(firebaseConfig);
+       firebase.analytics();
+     </script>
+    <script src="profile.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
